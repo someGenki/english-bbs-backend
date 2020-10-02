@@ -7,20 +7,13 @@ import cn.smallbun.screw.core.engine.EngineTemplateType;
 import cn.smallbun.screw.core.execute.DocumentationExecute;
 import cn.smallbun.screw.core.process.ProcessConfig;
 import com.yuan.util.JedisUtil;
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.connection.jedis.JedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.util.ReflectionUtils;
-import redis.clients.jedis.Jedis;
 
 import javax.sql.DataSource;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +32,7 @@ class EnglishBbsApplicationTests {
 
     @Test
     void contextLoads() {
+        // 生成数据库文档 screw.core
         DataSource dataSourceMysql = applicationContext.getBean(DataSource.class);
 
         // 生成文件配置
@@ -64,17 +58,19 @@ class EnglishBbsApplicationTests {
         // 执行生成
         new DocumentationExecute(config).execute();
     }
+
     /**
      * 配置想要生成的表+ 配置想要忽略的表
+     *
      * @return 生成表配置
      */
-    public static ProcessConfig getProcessConfig(){
+    public static ProcessConfig getProcessConfig() {
         // 忽略表名，需要忽略的表将表名放到list中即可
-        List<String> ignoreTableName = Arrays.asList("aa","test_group");
+        List<String> ignoreTableName = Arrays.asList("aa", "test_group");
         // 忽略表前缀，如忽略a开头的数据库表
-        List<String> ignorePrefix = Arrays.asList("a","z");
+        List<String> ignorePrefix = Arrays.asList("a", "z");
         // 忽略表后缀
-        List<String> ignoreSuffix = Arrays.asList("_test","czb_");
+        List<String> ignoreSuffix = Arrays.asList("_test", "czb_");
 
         return ProcessConfig.builder()
                 //根据名称指定表生成

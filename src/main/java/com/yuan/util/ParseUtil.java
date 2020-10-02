@@ -3,7 +3,6 @@ package com.yuan.util;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.util.Objects;
@@ -21,7 +20,7 @@ public class ParseUtil {
      * @param <T>    返回泛型
      * @return 解析后得到的值
      */
-    public static  <T> T parseSpEL(String key, Method method, Object[] args, Class<T> clazz) {
+    public static <T> T parseSpEL(String key, Method method, Object[] args, Class<T> clazz) {
         // SpEL上下文
         StandardEvaluationContext context = new StandardEvaluationContext();
         // 获取被拦截方法参数名列表(使用Spring支持类库)

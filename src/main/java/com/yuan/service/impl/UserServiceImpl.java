@@ -90,7 +90,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         String username = u.getUsername();
         userinfoService.save(new Userinfo().setUid(uid));
         signService.save(new Sign().setUid(uid));
-        optLogsService.createOptLogs(uid, OptTypeEnum.REGISTERED.getType(), null,null);
+        optLogsService.createOptLogs(uid, OptTypeEnum.REGISTERED.getType(), null, null);
         String token = jwtUtils.generateToken(uid);
         return new UserDto().setToken(token).setUid(uid).setNickname(username).setUsername(username);
     }

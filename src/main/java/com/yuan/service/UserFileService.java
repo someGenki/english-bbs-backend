@@ -22,6 +22,7 @@ public interface UserFileService extends IService<UserFile> {
     String saveFile(MultipartFile file, HttpServletRequest request);
 
     UserFile getFileRecord(String url);
+
     /**
      * 保存头像 使用OSS并且压缩,并返回url
      */

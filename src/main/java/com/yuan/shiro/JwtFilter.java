@@ -72,7 +72,7 @@ public class JwtFilter extends AuthenticatingFilter {
                 return false;
             }
             HttpServletResponse servletResponse1 = (HttpServletResponse) servletResponse;
-            servletResponse1.setHeader("set-cookie","jojo=1;");
+            servletResponse1.setHeader("set-cookie", "jojo=1;");
         }
         // 执行自动登录
 
@@ -101,7 +101,7 @@ public class JwtFilter extends AuthenticatingFilter {
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpServletRequest = WebUtils.toHttp(request);
         HttpServletResponse httpServletResponse = WebUtils.toHttp(response);
-        httpServletResponse.setHeader("Set-Cookie","Max-Age=66666");
+        httpServletResponse.setHeader("Set-Cookie", "Max-Age=66666");
         httpServletResponse.setHeader("Access-control-Allow-Origin", httpServletRequest.getHeader("Origin"));
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS,PUT,DELETE");
         httpServletResponse.setHeader("Access-Control-Allow-Headers", httpServletRequest.getHeader("Access-Control-Request-Headers"));

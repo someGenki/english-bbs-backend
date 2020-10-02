@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * 代码生成器，直接复制.java文件过来会找不到有主类异常
+ * 代码生成器，直接复制.java文件过来会找不到有主类异常 ?
  */
 public class CodeGenerator {
 

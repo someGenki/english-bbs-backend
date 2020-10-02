@@ -1,7 +1,7 @@
 package com.yuan.mapper;
 
-import com.yuan.entity.OptLogs;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.yuan.entity.OptLogs;
 
 /**
  * <p>
