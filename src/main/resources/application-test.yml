@@ -1,0 +1,62 @@
+server:
+  port: 8086
+# 虚拟机用
+yuan:
+  file:
+    root:
+      ## 定义文件保存的路径
+      path: /upload/
+      isOSS: true # 是否上传到OSS 暂时没用上
+      isCompress: true #是否压缩图片 暂时没用上
+  jwt:
+    # 加密秘钥
+    secret: f4e2e52034348f86b67cde581c0f9eb5
+    # token有效时长，7天，单位秒
+    expire: 3048000
+    header: token
+  qiniu: # 七牛云配置
+    path: http://res7.fanyibar.top/
+    accessKey: aot_ImvQM1X1iGysFH6xCjNwTNkMsVLgr0aUy0r-
+    secretKey: IOvOgoLGC7TydBdYNKOHJa6SDKmRt8V7U2W2Sv7m
+    bucket: somegenki
+
+shiro-redis:
+  enabled: true
+  redis-manager:
+    host: 127.0.0.1:6379
+    password: 123456
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB # 设置文件最大大小 超过会返回401
+  datasource: # 数据库连接池配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yuan?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  aop:
+    auto: true
+    proxy-target-class: true
+  redis:
+    password: 123456
+    host: 127.0.0.1
+    timeout: 0
+    port: 6379
+    database: 0
+    # 高版本springboot中使用jedis或者lettuce
+    jedis:
+      pool:
+        # 连接池最大连接数（负值表示无限制）
+        max-active: 8
+        # 连接池最大阻塞等待时间（负值无限制)
+        max-wait: 5000ms
+        # 最大空闲链接数
+        max-idle: 8
+        # 最小空闲链接数
+        min-idle: 0
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  configuration:
+    cache-enabled: true # 二级缓存,需要实现特定接口
